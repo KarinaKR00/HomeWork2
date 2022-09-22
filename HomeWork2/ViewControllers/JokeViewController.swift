@@ -17,7 +17,10 @@ class JokeViewController: UIViewController {
 
     }
     
-   
+    func configur(with joke: JokeTwo) {
+        questionTF.text = joke.setup
+        answerTF.text = joke.punchline
+    }
     
 }
 

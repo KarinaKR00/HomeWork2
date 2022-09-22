@@ -76,19 +76,27 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jot-Vk-rYm">
                                 <rect key="frame" x="20" y="123" width="374" height="210"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="RAv-r1-DWG">
+                                <rect key="frame" x="197" y="218" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jot-Vk-rYm" secondAttribute="bottom" constant="529" id="5BA-Gw-Cpa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RAv-r1-DWG" secondAttribute="trailing" constant="197" id="FB6-Tc-MJJ"/>
                             <constraint firstItem="Jot-Vk-rYm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="IdO-Ex-UzE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RAv-r1-DWG" secondAttribute="bottom" constant="624" id="MVs-zJ-auQ"/>
                             <constraint firstItem="Jot-Vk-rYm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PRI-sT-Dp8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jot-Vk-rYm" secondAttribute="trailing" constant="20" id="RhA-Hy-aw4"/>
+                            <constraint firstItem="RAv-r1-DWG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="130" id="eHS-ce-6rg"/>
                             <constraint firstItem="Jot-Vk-rYm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="fH3-h6-RcZ"/>
+                            <constraint firstItem="RAv-r1-DWG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="197" id="krx-yc-M8b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tLI-rJ-19w"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="RAv-r1-DWG" id="KoP-h6-rup"/>
                         <outlet property="imageView" destination="Jot-Vk-rYm" id="mtd-Ix-tz3"/>
                     </connections>
                 </viewController>

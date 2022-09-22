@@ -8,12 +8,14 @@
 import Foundation
 
 struct Joke: Decodable {
-    let joke: String
+    let joke: String?
     
 }
 
 struct JokeTwo: Decodable {
-    let setup: String
-    let punchline: String
+    let setup: String?
+    let punchline: String?
+    
+
 }
 

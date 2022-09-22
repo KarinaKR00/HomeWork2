@@ -32,15 +32,15 @@ class MainCollectionViewController: UICollectionViewController {
        
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+ 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "CellOne" {
+            guard let imageVC = segue.destination as? ImageViewController else { return }
+        } else {
+            guard let jokeVC = segue.destination as? JokeViewController else { return }
+        }
     }
-    */
+  
 
     // MARK: - UICollectionViewDataSource
     
@@ -67,7 +67,7 @@ class MainCollectionViewController: UICollectionViewController {
         
         case .randomImage: performSegue(withIdentifier: "CellOne", sender: nil)
         case .randomJoke: fetchJoke()
-        case .randomJokeTwo: fetchJokeTwo()
+        case .randomJokeTwo: performSegue(withIdentifier: "CellTwo", sender: nil)
         }
     }
 
@@ -115,27 +115,16 @@ extension MainCollectionViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainCollectionViewController {
     private func fetchJoke() {
-        
-        guard let url = URL(string: Link.jokeURL.rawValue) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
+        NetworkManager.shared.fetch(dataType: Joke.self, from: Link.jokeURL.rawValue){ [weak self] result in
+            switch result {
+            case .success(let joke):
+                print(joke)
+                self?.successAlert()
+            case .failure(let error):
+                print(error)
+                self?.failedAlert()
             }
-            
-            let jsonDecoder = JSONDecoder()
-            
-            do {
-                let joke = try jsonDecoder.decode(Joke.self, from: data)
-                self.successAlert()
-                print(joke.joke)
-            } catch {
-                print(error.localizedDescription)
-                self.failedAlert()
-            }
-            
-        }.resume()
+        }
         
     }
     
